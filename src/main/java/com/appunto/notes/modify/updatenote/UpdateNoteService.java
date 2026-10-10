@@ -3,7 +3,7 @@ package com.appunto.notes.modify.updatenote;
 import com.appunto.notes.Note;
 import com.appunto.notes.NoteRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.appunto.security.CurrentUser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,9 +19,7 @@ public class UpdateNoteService {
     }
 
     public UpdateNoteResponse update(Long id, UpdateNoteRequest request) {
-        Long userId = (Long) SecurityContextHolder.getContext()
-                .getAuthentication()
-                .getPrincipal();
+        Long userId = CurrentUser.id();
 
         Note note = repository.findByIdAndUserId(id, userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found"));

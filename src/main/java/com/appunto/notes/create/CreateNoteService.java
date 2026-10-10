@@ -2,7 +2,7 @@ package com.appunto.notes.create;
 
 import com.appunto.notes.Note;
 import com.appunto.notes.NoteRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.appunto.security.CurrentUser;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,9 +15,7 @@ public class CreateNoteService {
     }
 
     public CreateNoteResponse create(CreateNoteRequest request) {
-        Long userId = (Long) SecurityContextHolder.getContext()
-                .getAuthentication()
-                .getPrincipal();
+        Long userId = CurrentUser.id();
 
         Note note = new Note();
         note.setUserId(userId);

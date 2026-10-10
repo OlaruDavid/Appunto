@@ -3,7 +3,7 @@ package com.appunto.users.me;
 import com.appunto.users.User;
 import com.appunto.users.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.appunto.security.CurrentUser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -17,9 +17,7 @@ public class MeService {
     }
 
     public MeResponse getMe() {
-        Long userId = (Long) SecurityContextHolder.getContext()
-                .getAuthentication()
-                .getPrincipal();
+        Long userId = CurrentUser.id();
 
         User user = repository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));

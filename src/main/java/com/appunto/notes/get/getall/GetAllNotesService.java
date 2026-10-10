@@ -3,7 +3,7 @@ package com.appunto.notes.get.getall;
 import com.appunto.notes.NoteRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.appunto.security.CurrentUser;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,9 +18,7 @@ public class GetAllNotesService {
     }
 
     public GetAllNotesResponse getAll(int page, int size) {
-        Long userId = (Long) SecurityContextHolder.getContext()
-                .getAuthentication()
-                .getPrincipal();
+        Long userId = CurrentUser.id();
 
         int safePage = Math.max(page, 0);
         int safeSize = Math.min(Math.max(size, 1), MAX_SIZE);

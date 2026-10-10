@@ -2,7 +2,7 @@ package com.appunto.users.delete.account;
 
 import com.appunto.users.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.appunto.security.CurrentUser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -16,9 +16,7 @@ public class DeleteAccountService {
     }
 
     public void deleteAccount() {
-        Long userId = (Long) SecurityContextHolder.getContext()
-                .getAuthentication()
-                .getPrincipal();
+        Long userId = CurrentUser.id();
 
         if (!repository.existsById(userId)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
