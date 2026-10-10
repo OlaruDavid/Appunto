@@ -1,8 +1,8 @@
 package com.appunto.notes.delete.deletenote;
 
 import com.appunto.notes.NoteRepository;
-import org.springframework.http.HttpStatus;
 import com.appunto.security.CurrentUser;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
