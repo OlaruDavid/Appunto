@@ -1,0 +1,61 @@
+# Maven / Java
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+*.class
+*.log
+hs_err_pid*
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Eclipse
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# Kotlin / Gradle
+.kotlin/
+.gradle/
+build/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Local configuration overrides
+application-local.properties
+application-local.yml
+application-local.yaml
+
+# Logs and temporary files
+logs/
+tmp/
+temp/
+
+# IDE and test output
+out/

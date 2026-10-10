@@ -1,0 +1,18 @@
+services:
+  db:
+    image: docker.io/library/postgres:17
+    container_name: appunto-db
+    restart: unless-stopped
+    env_file:
+      - ${HOME}/Desktop/db.env
+    volumes:
+      - appunto-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appunto -d appunto"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  appunto-db-data:
+    external: true
